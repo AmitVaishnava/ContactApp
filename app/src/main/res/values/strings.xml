@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ContactApp</string>
+    <string name="no_internet_connection_msg">Sorry! No Internet Connections</string>
+    <string name="default_error_msg">Something went wrong!</string>
+</resources>
