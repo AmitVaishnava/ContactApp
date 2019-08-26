@@ -2,7 +2,6 @@ package com.contactapp.contactdetail
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -75,9 +74,11 @@ class ContactDetailsFragment : BaseFragment<BaseContract.BaseUserActionsListener
 
     private fun initData() {
         mContact?.let {
-            mProfileImageView.setImageBitmap(mContact?.imagePath?.let { it ->
-                UiUtils.getBitmapFromPath(it)
-            })
+            if (!TextUtils.isEmpty(mContact?.imagePath))
+                mProfileImageView.setImageBitmap(mContact?.imagePath?.let { it ->
+                    UiUtils.getBitmapFromPath(it)
+                })
+
             mNameTextView.text = mContact?.name
             mNumberTextView.text = mContact?.number
             mEmailAddressTextView.text = mContact?.emailAddress
