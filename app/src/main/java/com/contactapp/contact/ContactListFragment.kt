@@ -28,6 +28,7 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
     private var mContactList: List<Contact>? = null
     private lateinit var contactListAdapter: ContactListAdapter
     private lateinit var contactListFragmentListener: ContactListFragmentListener
+    private var isForceUpdate = false
 
     companion object {
         fun newInstance(): ContactListFragment {
@@ -62,15 +63,22 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
 
     override fun onResume() {
         super.onResume()
-        handleContactListData()
+        if (mContactList.isNullOrEmpty() || isForceUpdate) {
+            isForceUpdate = false
+            handleContactListData()
+        }
     }
 
-    fun handleContactListData(){
+    fun handleContactListData() {
         if (checkPermission()) {
             loadContactList()
         } else {
             requestPermission()
         }
+    }
+
+    fun forceUpdate(){
+        isForceUpdate= true
     }
     fun loadContactList() {
         mUserActionListener?.loadContactList()

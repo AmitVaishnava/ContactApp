@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), ContactListFragment.ContactListFragmen
             super.onChange(selfChange)
             val fragment = FragmentHelper.get(this@MainActivity, R.id.parent_layout)
             if (fragment is ContactListFragment) {
-                fragment.handleContactListData()
+                fragment.forceUpdate()
             }
         }
     }
