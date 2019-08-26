@@ -18,7 +18,7 @@ class ContactListAdapter(contactListAdapterListener: ContactListAdapterListener)
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_contact_item, parent, false)
         return ViewHolder(view)
     }
@@ -27,7 +27,7 @@ class ContactListAdapter(contactListAdapterListener: ContactListAdapterListener)
         return contactList.size
     }
 
-    override fun onBindViewHolder(holder: ContactListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val contact = contactList[position]
         holder.bind(contact, position)
         holder.itemView.setOnClickListener {
