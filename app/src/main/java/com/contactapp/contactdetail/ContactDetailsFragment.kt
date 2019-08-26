@@ -35,7 +35,6 @@ class ContactDetailsFragment : BaseFragment<BaseContract.BaseUserActionsListener
     private lateinit var mEmailAddressTextView: TextView
     private lateinit var mCallImageButton: ImageButton
     private lateinit var mSmsImageButton: ImageButton
-    private lateinit var contactDetailsFragmentListener: ContactDetailsFragmentListener
 
     companion object {
         fun newInstance(contact: Contact): ContactDetailsFragment {
@@ -49,13 +48,6 @@ class ContactDetailsFragment : BaseFragment<BaseContract.BaseUserActionsListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.contact_detail, container, false)
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is ContactDetailsFragmentListener) {
-            contactDetailsFragmentListener = context
-        }
     }
 
     override fun initUserActionListener() {
@@ -121,7 +113,6 @@ class ContactDetailsFragment : BaseFragment<BaseContract.BaseUserActionsListener
         val smsString = "sample text"
         val smsManager = SmsManager.getDefault()
         smsManager.sendTextMessage(mContact?.number, null, smsString, null, null)
-
         Toast.makeText(context, "SMS send Please check your inbox", Toast.LENGTH_LONG).show()
     }
 
@@ -157,10 +148,5 @@ class ContactDetailsFragment : BaseFragment<BaseContract.BaseUserActionsListener
                 showErrorMsg("Permission denied")
             }
         }
-    }
-
-    interface ContactDetailsFragmentListener {
-        fun onActionPhone(number: String)
-        fun onActionSms(number: String)
     }
 }

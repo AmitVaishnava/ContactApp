@@ -29,7 +29,7 @@ class ContactListAdapter(contactListAdapterListener: ContactListAdapterListener)
 
     override fun onBindViewHolder(holder: ContactListAdapter.ViewHolder, position: Int) {
         val contact = contactList[position]
-        holder.bind(contact)
+        holder.bind(contact, position)
         holder.itemView.setOnClickListener {
             contactListAdapterListener.onItemClick(position)
         }
@@ -39,8 +39,8 @@ class ContactListAdapter(contactListAdapterListener: ContactListAdapterListener)
         val nameTextView: TextView = itemView.findViewById(R.id.name_txt_view)
         val numberTextView: TextView = itemView.findViewById(R.id.number_txt_view)
 
-        fun bind(contact: Contact) {
-            nameTextView.text = contact.name
+        fun bind(contact: Contact, position: Int) {
+            nameTextView.text = (position + 1).toString()+" : "+contact.name
             numberTextView.text = contact.number
         }
     }

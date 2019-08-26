@@ -16,4 +16,8 @@ object FragmentHelper {
             .addToBackStack(tag)
             .commit()
     }
+
+    fun get(activity: FragmentActivity, container: Int): Fragment? {
+        return activity.supportFragmentManager.findFragmentById(container)
+    }
 }

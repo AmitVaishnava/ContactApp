@@ -14,7 +14,9 @@ class ContactListPresenter(contactListApiImp: ContactListApiImp) : BasePresenter
         contactListApi.loadContactLis(object : WebServicesCallback<List<Contact>> {
             override fun onSuccess(contactList: List<Contact>) {
                 view()?.hideProgressbar()
-                view()?.showContactList(contactList)
+                //Sort  in alphabatic order
+                val sortList = contactList.sortedBy { contact -> contact.name }
+                view()?.showContactList(sortList)
             }
 
             override fun onFailure(errorMsg: String) {

@@ -14,10 +14,11 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars[0]"
             android:id="@+id/profile_img"
+            android:src="@drawable/icon_default"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintDimensionRatio="w,1:1"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="w,1:1"/>
 
     <TextView
             tools:text="Place Holder Name"

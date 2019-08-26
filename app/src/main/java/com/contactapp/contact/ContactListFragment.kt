@@ -35,7 +35,6 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
         }
     }
 
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is ContactListFragmentListener)
@@ -63,13 +62,16 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
 
     override fun onResume() {
         super.onResume()
+        handleContactListData()
+    }
+
+    fun handleContactListData(){
         if (checkPermission()) {
             loadContactList()
         } else {
             requestPermission()
         }
     }
-
     fun loadContactList() {
         mUserActionListener?.loadContactList()
     }
@@ -78,6 +80,7 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
         super.onStop()
         mUserActionListener?.onStop()
     }
+
     fun checkPermission(): Boolean {
         val CallPermissionResult =
             context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.CALL_PHONE) }
