@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity(), ContactListFragment.ContactListFragmen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.applicationContext.contentResolver
+        applicationContext.contentResolver
             .registerContentObserver(ContactsContract.Contacts.CONTENT_URI, true, myContentObserver)
 
         FragmentHelper.replace(this, R.id.parent_layout, ContactListFragment.newInstance())
     }
 
     //Content Obsever user to listen data change in Native Contact App
-    //TODO:Another way is to use sync adapter, but I hasd used ContactObserver
+    //TODO:Another way is to use sync adapter, but I had used ContactObserver
     var myContentObserver = object : ContentObserver(null) {
         override fun onChange(selfChange: Boolean, uri: Uri?) {
             super.onChange(selfChange, uri)
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), ContactListFragment.ContactListFragmen
         applicationContext.contentResolver.unregisterContentObserver(myContentObserver)
     }
 
-    override fun onItemClick(contact: Contact) {
+    override fun onContactListItemClick(contact: Contact) {
         FragmentHelper.addAddToBackStack(
             this,
             R.id.parent_layout,

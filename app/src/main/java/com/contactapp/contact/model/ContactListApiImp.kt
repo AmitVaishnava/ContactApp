@@ -84,6 +84,8 @@ class ContactListApiImp : ContactListApi {
     }
 
     override fun onCancel() {
-        asyncTask?.let { asyncTask -> asyncTask.cancel(true) }
+        if (::asyncTask.isInitialized) {
+            asyncTask.cancel(true)
+        }
     }
 }

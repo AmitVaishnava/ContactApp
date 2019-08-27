@@ -15,7 +15,7 @@ class ContactListPresenter(contactListApiImp: ContactListApiImp) : BasePresenter
             override fun onSuccess(contactList: List<Contact>) {
                 view()?.hideProgressbar()
                 //Sort  in alphabatic order
-                val sortList = contactList.sortedBy { contact -> contact.name }
+                val sortList = contactList.sortedBy { contact -> contact.name?.toLowerCase() }
                 view()?.showContactList(sortList)
             }
 

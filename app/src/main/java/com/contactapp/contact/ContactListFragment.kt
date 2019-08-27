@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -115,9 +113,7 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
     }
 
     private fun requestPermission() {
-
-        ActivityCompat.requestPermissions(
-            context as FragmentActivity,
+        requestPermissions(
             arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.CALL_PHONE),
             Constant.PERMISSION_REQUEST_CODE
         )
@@ -139,10 +135,10 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
 
     override fun onItemClick(position: Int) {
         val contact = mContactList?.get(position)
-        contact?.let { contactListFragmentListener.onItemClick(it) }
+        contact?.let { contactListFragmentListener.onContactListItemClick(it) }
     }
 
     interface ContactListFragmentListener {
-        fun onItemClick(contact: Contact)
+        fun onContactListItemClick(contact: Contact)
     }
 }

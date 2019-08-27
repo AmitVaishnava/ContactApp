@@ -17,6 +17,7 @@
             android:id="@+id/profile_img"
             android:layout_margin="30dp"
             android:maxWidth="150dp"
+            android:maxHeight="150dp"
             android:src="@drawable/icon_default"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
