@@ -59,9 +59,16 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
         recyclerView.adapter = contactListAdapter
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (mContactList.isNullOrEmpty()) {
+            handleContactListData()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        if (mContactList.isNullOrEmpty() || isForceUpdate) {
+        if (isForceUpdate) {
             isForceUpdate = false
             handleContactListData()
         }

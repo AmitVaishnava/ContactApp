@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), ContactListFragment.ContactListFragmen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        applicationContext.contentResolver
+        this.applicationContext.contentResolver
             .registerContentObserver(ContactsContract.Contacts.CONTENT_URI, true, myContentObserver)
 
         FragmentHelper.replace(this, R.id.parent_layout, ContactListFragment.newInstance())
