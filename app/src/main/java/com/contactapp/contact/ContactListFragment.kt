@@ -91,6 +91,7 @@ class ContactListFragment : BaseFragment<ContactListContract.ContactListUserActi
 
     override fun onStop() {
         super.onStop()
+        isForceUpdate = false
         mUserActionListener?.onStop()
     }
 
